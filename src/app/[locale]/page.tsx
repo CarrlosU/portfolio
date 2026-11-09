@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Globe, Briefcase, Mail, ArrowUpRight, Download } from "lucide-react";
 import { Navbar } from "@/shared/presentation/components/Navbar";
 import { Footer } from "@/shared/presentation/components/Footer";
+import { HeroVisual } from "@/shared/presentation/components/HeroVisual";
 import { Section } from "@/shared/presentation/components/Section";
 import { getProfile } from "@/domains/identity";
 import { getProjects } from "@/domains/projects";
@@ -38,12 +39,13 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
       <Navbar locale={locale} />
       <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         {/* HERO */}
-        <div className="py-14 sm:py-20">
+        <div className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="min-w-0">
           <p className="inline-block rounded-full border border-[#27272a] bg-[#15151B] px-3 py-1 text-xs text-[#A1A1AA]">
             {profile.available[locale]}
           </p>
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#6C3BFF]">
-            Software Engineer · Backend · Full Stack
+            {profile.role[locale]}
           </p>
           <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.1] sm:text-5xl">
             {locale === "es"
@@ -64,6 +66,8 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               <Download size={18} /> {locale === "es" ? "Descargar CV" : "Download CV"}
             </a>
           </div>
+          </div>
+          <HeroVisual />
         </div>
 
         <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.name}>
