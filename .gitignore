@@ -78,6 +78,11 @@ web_modules/
 .next
 out
 
+# Playwright / QA artifacts
+playwright-report/
+test-results/
+artifacts/
+
 # Nuxt.js build / generate output
 .nuxt
 dist
