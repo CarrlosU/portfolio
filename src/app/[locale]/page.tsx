@@ -70,13 +70,18 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           <HeroVisual />
         </div>
 
-        <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.name}>
-          <p className="max-w-3xl text-[#A1A1AA]">{profile.summary[locale]}</p>
-          <p className="mt-3 max-w-3xl text-sm text-[#A1A1AA]">
-            {locale === "es"
-              ? "Filosofía: sistemas escalables, seguros y mantenibles, con buenas prácticas y resolución de problemas."
-              : "Philosophy: scalable, secure and maintainable systems with good practices."}
-          </p>
+        <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.aboutHeadline[locale]}>
+          {profile.aboutBody[locale].map((p, i) => (
+            <p key={i} className="mt-3 max-w-3xl text-[#A1A1AA] first:mt-0">{p}</p>
+          ))}
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {profile.principles.map((pr) => (
+              <article key={pr.id} className="rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+                <h3 className="font-semibold">{pr.title[locale]}</h3>
+                <p className="mt-2 text-sm text-[#A1A1AA]">{pr.detail[locale]}</p>
+              </article>
+            ))}
+          </div>
         </Section>
 
         <Section id={t.experience} eyebrow={locale === "es" ? "Experiencia" : "Experience"} title={locale === "es" ? "Trayectoria" : "Career"}>
