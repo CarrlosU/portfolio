@@ -39,7 +39,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
       <Navbar locale={locale} />
       <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         {/* HERO */}
-        <div className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="grid min-w-0 items-center gap-10 py-14 sm:py-20 lg:grid-cols-2 lg:gap-12">
           <div className="min-w-0">
           <p className="inline-block rounded-full border border-[#27272a] bg-[#15151B] px-3 py-1 text-xs text-[#A1A1AA]">
             {profile.available[locale]}
@@ -47,7 +47,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#6C3BFF]">
             {profile.role[locale]}
           </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.1] sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-balance text-4xl font-bold leading-[1.1] sm:text-[2.75rem]">
             {locale === "es"
               ? "Construyo soluciones de software que resuelven problemas reales."
               : "I build software solutions that solve real problems."}
@@ -66,8 +66,19 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               <Download size={18} /> {locale === "es" ? "Descargar CV" : "Download CV"}
             </a>
           </div>
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[#A1A1AA]">
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white">
+              GitHub <ArrowUpRight size={14} />
+            </a>
+            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-white">
+              LinkedIn <ArrowUpRight size={14} />
+            </a>
+            <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-1 hover:text-white">
+              Email <ArrowUpRight size={14} />
+            </a>
           </div>
-          <HeroVisual />
+          </div>
+          <HeroVisual locale={locale} />
         </div>
 
         <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.aboutHeadline[locale]}>
