@@ -58,7 +58,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               {locale === "es" ? "+ Más tecnologías" : "+ More technologies"}
             </span>
           </div>
-          <p className="mt-3 max-w-2xl text-xs text-[var(--muted)]">
+          <p className="mt-3 max-w-2xl text-center text-xs text-[var(--muted)] sm:text-left">
             {locale === "es"
               ? "Stack representativo. Aprendizaje continuo y capacidad de adaptación a nuevas tecnologías y herramientas."
               : "Representative stack. Continuous learning and fast adaptation to new technologies and tools."}
@@ -71,14 +71,14 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               <Download size={18} /> {locale === "es" ? "Descargar CV" : "Download CV"}
             </a>
           </div>
-          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[var(--muted)]">
-            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[var(--text)]">
+          <div className="mt-5 grid w-full grid-cols-3 items-center text-sm text-[var(--muted)] sm:flex sm:justify-center sm:gap-10 lg:justify-between lg:gap-4 lg:px-2">
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--text)]">
               GitHub <ArrowUpRight size={14} />
             </a>
-            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-[var(--text)]">
+            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--text)]">
               LinkedIn <ArrowUpRight size={14} />
             </a>
-            <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-1 hover:text-[var(--text)]">
+            <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center justify-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--text)]">
               Email <ArrowUpRight size={14} />
             </a>
           </div>
