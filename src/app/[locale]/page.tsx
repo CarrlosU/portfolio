@@ -53,11 +53,19 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               : "I build software solutions that solve real problems."}
           </h1>
           <p className="mt-4 max-w-2xl text-base text-[#A1A1AA]">{profile.summary[locale]}</p>
-          <div className="mt-5 flex max-w-full flex-wrap gap-2">
+          <div className="mt-5 flex max-w-full flex-wrap gap-2" aria-label={locale === "es" ? "Tecnologías representativas" : "Representative technologies"}>
             {heroChips.map((c) => (
               <span key={c} className="rounded-full border border-[#27272a] bg-[#15151B] px-3 py-1 text-xs text-[#A1A1AA]">{c}</span>
             ))}
+            <span className="rounded-full border border-[#6C3BFF]/50 bg-[#6C3BFF]/10 px-3 py-1 text-xs font-medium text-[#FAFAFA]">
+              {locale === "es" ? "+ Más tecnologías" : "+ More technologies"}
+            </span>
           </div>
+          <p className="mt-3 max-w-2xl text-xs text-[#A1A1AA]">
+            {locale === "es"
+              ? "Stack representativo. Aprendizaje continuo y capacidad de adaptación a nuevas tecnologías y herramientas."
+              : "Representative stack. Continuous learning and fast adaptation to new technologies and tools."}
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href={`#${t.projects}`} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6C3BFF] px-6 py-3 font-medium hover:bg-[#5a2fe0]">
               {locale === "es" ? "Ver proyectos" : "View projects"} <ArrowUpRight size={18} />
