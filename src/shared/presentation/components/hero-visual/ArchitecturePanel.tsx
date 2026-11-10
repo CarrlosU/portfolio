@@ -2,41 +2,28 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { LIVE_CATEGORIES } from "./live-scenes.data";
 import { shuffledExcludingFirst } from "./shuffle";
 import { CodeTyping } from "./CodeTyping";
 import { CodeEditor } from "./CodeEditor";
 import type { Locale } from "@/shared/domain/types";
 
-const HOLD_MS = 2200;
+const HOLD_MS = 3000;
 
 const STRINGS = {
   es: {
-    panelLabel: "Entorno de desarrollo",
-    live: "Live preview",
-    pause: "Pausar animación",
-    play: "Reanudar animación",
-    prev: "Categoría anterior",
-    next: "Categoría siguiente",
-    goTo: (t: string) => `Ir a categoría ${t}`,
-    writing: "Escribiendo código…",
-    paused: "En pausa",
-    nextUp: "Siguiente categoría…",
-    autoPlay: "Auto play",
+    panelLabel: "Ingeniería de software",
+    goTo: (index: string, short: string, title: string) => `Ir a categoría ${index} ${short}: ${title}`,
+    active: "Animación activa",
+    paused: "Animación en pausa",
+    holding: "Cambiando de ejemplo",
   },
   en: {
-    panelLabel: "Development environment",
-    live: "Live preview",
-    pause: "Pause animation",
-    play: "Resume animation",
-    prev: "Previous category",
-    next: "Next category",
-    goTo: (t: string) => `Go to category ${t}`,
-    writing: "Writing code…",
-    paused: "Paused",
-    nextUp: "Next category…",
-    autoPlay: "Auto play",
+    panelLabel: "Software Engineering",
+    goTo: (index: string, short: string, title: string) => `Go to category ${index} ${short}: ${title}`,
+    active: "Animation active",
+    paused: "Animation paused",
+    holding: "Switching example",
   },
 } as const;
 
@@ -52,11 +39,10 @@ export function ArchitecturePanel({ locale }: { locale: Locale }) {
 
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [snippetIndex, setSnippetIndex] = useState(0);
-  const [manualPlaying, setManualPlaying] = useState(true);
   const [hoverPaused, setHoverPaused] = useState(false);
   const [phase, setPhase] = useState<"typing" | "holding">("typing");
 
-  const playing = !reduce && manualPlaying && !hoverPaused;
+  const playing = !reduce && !hoverPaused;
   const category = LIVE_CATEGORIES[categoryIndex];
   const bagsRef = useRef<Record<string, Bag>>({});
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -107,16 +93,16 @@ export function ArchitecturePanel({ locale }: { locale: Locale }) {
   );
 
   const snippet = category.snippets[snippetIndex] ?? category.snippets[0];
-  const status = !manualPlaying || hoverPaused ? t.paused : phase === "holding" ? t.nextUp : t.writing;
+  const dotState = !playing ? "paused" : phase === "holding" ? "holding" : "active";
+  const dotLabel = dotState === "active" ? t.active : dotState === "paused" ? t.paused : t.holding;
 
   return (
     <motion.div
       initial={reduce ? {} : { opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-full min-w-0 max-w-full rounded-2xl border border-[#27272a] bg-[#15151B] p-4 sm:p-5"
+      className="w-full min-w-0 max-w-full rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-4 sm:p-5"
       aria-label={t.panelLabel}
-      aria-roledescription="lobby"
       data-testid="live-panel"
       onMouseEnter={() => setHoverPaused(true)}
       onMouseLeave={() => setHoverPaused(false)}
@@ -128,19 +114,25 @@ export function ArchitecturePanel({ locale }: { locale: Locale }) {
       }}
     >
       <div className="flex items-center justify-between gap-2">
-        <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[#A1A1AA]">
-          Development environment
+        <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+          Software Engineering
         </p>
-        <span className="flex shrink-0 items-center gap-1.5 rounded-full border border-[#6C3BFF]/40 px-2 py-0.5">
-          <span
-            aria-hidden="true"
-            className={`h-1.5 w-1.5 rounded-full bg-[#6C3BFF] ${reduce ? "" : "animate-pulse"}`}
-          />
-          <span className="font-mono text-[10px] uppercase tracking-widest text-[#FAFAFA]">
-            {t.live}
-          </span>
-        </span>
+        <span
+          role="status"
+          aria-label={dotLabel}
+          title={dotLabel}
+          className={`h-2 w-2 shrink-0 rounded-full ${
+            dotState === "active"
+              ? "bg-[#6C3BFF] shadow-[0_0_10px_var(--primary)] animate-pulse"
+              : dotState === "holding"
+                ? "bg-[#c4b5fd]"
+                : "bg-[#71717A]"
+          }`}
+        />
       </div>
+      <span className="sr-only" aria-live="polite">
+        {dotLabel} · {category.index} / 04 · {category.title[locale]} · {snippet.file}
+      </span>
 
       <div className="mt-4 grid min-w-0 grid-cols-4 gap-1.5" role="tablist" aria-label={t.panelLabel}>
         {LIVE_CATEGORIES.map((c, i) => (
@@ -149,12 +141,12 @@ export function ArchitecturePanel({ locale }: { locale: Locale }) {
             type="button"
             role="tab"
             aria-selected={i === categoryIndex}
-            aria-label={t.goTo(c.title[locale])}
+            aria-label={t.goTo(c.index, c.short, c.title[locale])}
             onClick={() => goToCategory(i)}
             className={`min-w-0 truncate rounded-lg border px-2 py-1.5 font-mono text-[10px] transition-colors ${
               i === categoryIndex
-                ? "border-[#6C3BFF]/50 bg-[#0d0d12] text-white shadow-[0_0_24px_-8px_rgba(108,59,255,0.7)]"
-                : "border-[#27272a] bg-[#1c1c22] text-[#A1A1AA] hover:border-[#6C3BFF]/30"
+                ? "border-[#6C3BFF]/50 bg-[var(--code-bg)] text-[var(--text)] shadow-[0_0_24px_-8px_rgba(108,59,255,0.7)]"
+                : "border-[var(--border)] bg-[var(--surface-2)] text-[var(--muted)] hover:border-[#6C3BFF]/30"
             }`}
           >
             {c.index} {c.short}
@@ -177,46 +169,6 @@ export function ArchitecturePanel({ locale }: { locale: Locale }) {
             onComplete={handleComplete}
           />
         </CodeEditor>
-      </div>
-
-      <div className="mt-3 flex min-w-0 items-center justify-between gap-2">
-        <div className="flex shrink-0 items-center gap-1">
-          <button
-            type="button"
-            aria-label={t.prev}
-            onClick={() => goToCategory(categoryIndex - 1)}
-            className="rounded-lg border border-[#27272a] p-1.5 text-[#A1A1AA] hover:border-[#6C3BFF]/50 hover:text-white"
-          >
-            <ChevronLeft size={14} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            aria-label={manualPlaying ? t.pause : t.play}
-            aria-pressed={!manualPlaying}
-            onClick={() => setManualPlaying((p) => !p)}
-            className="rounded-lg border border-[#27272a] p-1.5 text-[#A1A1AA] hover:border-[#6C3BFF]/50 hover:text-white"
-          >
-            {manualPlaying ? (
-              <Pause size={14} aria-hidden="true" />
-            ) : (
-              <Play size={14} aria-hidden="true" />
-            )}
-          </button>
-          <button
-            type="button"
-            aria-label={t.next}
-            onClick={() => goToCategory(categoryIndex + 1)}
-            className="rounded-lg border border-[#27272a] p-1.5 text-[#A1A1AA] hover:border-[#6C3BFF]/50 hover:text-white"
-          >
-            <ChevronRight size={14} aria-hidden="true" />
-          </button>
-        </div>
-        <p className="min-w-0 truncate font-mono text-[10px] text-[#A1A1AA]" aria-hidden="true">
-          {category.index} / 04 · {category.title[locale]} · {snippet.file}
-        </p>
-        <p className="shrink-0 text-[11px] text-[#A1A1AA]" aria-live="polite">
-          {reduce ? t.autoPlay : status}
-        </p>
       </div>
     </motion.div>
   );

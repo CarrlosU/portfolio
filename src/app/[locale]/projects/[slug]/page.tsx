@@ -29,56 +29,56 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   const d = details(locale);
   const project = await getProjectBySlug(slug, locale);
   if (!project) {
-    return <main className="flex min-h-screen items-center justify-center bg-[#09090B] text-white"><p>Not found</p></main>;
+    return <main className="flex min-h-screen items-center justify-center bg-[var(--bg)] text-[var(--text)]"><p>Not found</p></main>;
   }
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#09090B] text-[#FAFAFA]">
+    <div className="min-h-screen overflow-x-clip bg-[var(--bg)] text-[var(--text)]">
       <Navbar locale={locale} />
       <main className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6">
-        <Link href={`/${locale}/`} className="text-sm text-[#A1A1AA] hover:text-white">← {d.back}</Link>
-        <p className="mt-4 text-xs uppercase tracking-widest text-[#6C3BFF]">Case study</p>
+        <Link href={`/${locale}/`} className="text-sm text-[var(--muted)] hover:text-[var(--text)]">← {d.back}</Link>
+        <p className="mt-4 text-xs uppercase tracking-widest text-[var(--accent-text)]">Case study</p>
         <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{project.name}</h1>
-        <p className="mt-2 text-[#A1A1AA]">{project.tagline[locale]}</p>
+        <p className="mt-2 text-[var(--muted)]">{project.tagline[locale]}</p>
         <div className="mt-4 flex flex-wrap gap-2">
-          {project.stack.map((s) => <span key={s.id} className="rounded-full border border-[#27272a] bg-[#15151B] px-3 py-1 text-xs">{s.name}</span>)}
+          {project.stack.map((s) => <span key={s.id} className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs">{s.name}</span>)}
         </div>
         {[
           [d.problem, project.problem[locale]],
           [d.goal, project.description[locale]],
           [d.role, project.role[locale]],
         ].map(([h, b]) => (
-          <section key={h} className="mt-8 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+          <section key={h} className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
             <h2 className="font-semibold">{h}</h2>
-            <p className="mt-2 text-sm text-[#A1A1AA]">{b}</p>
+            <p className="mt-2 text-sm text-[var(--muted)]">{b}</p>
           </section>
         ))}
-        <section className="mt-8 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+        <section className="mt-8 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h2 className="font-semibold">{d.arch}</h2>
           <div className="mt-3 grid grid-cols-2 gap-2 text-center text-xs sm:grid-cols-4">
-            {["Client", "Next.js", "FastAPI", "PostgreSQL"].map((n) => <div key={n} className="rounded-lg bg-[#1c1c22] px-2 py-3">{n}</div>)}
+            {["Client", "Next.js", "FastAPI", "PostgreSQL"].map((n) => <div key={n} className="rounded-lg bg-[var(--surface-2)] px-2 py-3">{n}</div>)}
           </div>
-          <p className="mt-3 text-sm text-[#A1A1AA]">{locale === "es" ? "Multi-tenant, stateless donde aplica, persistencia externalizada." : "Multi-tenant, stateless where it applies, externalized persistence."}</p>
+          <p className="mt-3 text-sm text-[var(--muted)]">{locale === "es" ? "Multi-tenant, stateless donde aplica, persistencia externalizada." : "Multi-tenant, stateless where it applies, externalized persistence."}</p>
         </section>
-        <section className="mt-4 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+        <section className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h2 className="font-semibold">{d.stack}</h2>
-          <p className="mt-2 text-sm text-[#A1A1AA]">{locale === "es" ? "FastAPI por productividad y tipado, PostgreSQL por integridad relacional, Redis por caché/colas, React por ecosistema." : "FastAPI for productivity, PostgreSQL for relational integrity, Redis for cache/queues, React for ecosystem."}</p>
+          <p className="mt-2 text-sm text-[var(--muted)]">{locale === "es" ? "FastAPI por productividad y tipado, PostgreSQL por integridad relacional, Redis por caché/colas, React por ecosistema." : "FastAPI for productivity, PostgreSQL for relational integrity, Redis for cache/queues, React for ecosystem."}</p>
         </section>
-        <section className="mt-4 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+        <section className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h2 className="font-semibold">{d.challenges}</h2>
-          <p className="mt-2 text-sm text-[#A1A1AA]">{locale === "es" ? "Concurrencia, voz/NLP, y consistencia de datos resueltos con colas, reintentos y validación." : "Concurrency, voice/NLP and data consistency solved with queues, retries and validation."}</p>
+          <p className="mt-2 text-sm text-[var(--muted)]">{locale === "es" ? "Concurrencia, voz/NLP, y consistencia de datos resueltos con colas, reintentos y validación." : "Concurrency, voice/NLP and data consistency solved with queues, retries and validation."}</p>
         </section>
-        <section className="mt-4 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+        <section className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h2 className="font-semibold">{d.results}</h2>
-          <p className="mt-2 text-sm text-[#A1A1AA]">{locale === "es" ? "Sistema en producción, sin métricas inventadas. Evidencia: sitio y demo." : "Production system, no invented metrics. Evidence: site and demo."}</p>
+          <p className="mt-2 text-sm text-[var(--muted)]">{locale === "es" ? "Sistema en producción, sin métricas inventadas. Evidencia: sitio y demo." : "Production system, no invented metrics. Evidence: site and demo."}</p>
         </section>
-        <section className="mt-4 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+        <section className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h2 className="font-semibold">{d.demo}</h2>
-          <p className="mt-2 text-sm text-[#A1A1AA]">Screenshots pendientes de autorización.</p>
-          {project.siteUrl && <a href={project.siteUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm text-[#6C3BFF]">{project.siteUrl} ↗</a>}
+          <p className="mt-2 text-sm text-[var(--muted)]">Screenshots pendientes de autorización.</p>
+          {project.siteUrl && <a href={project.siteUrl} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm text-[var(--accent-text)]">{project.siteUrl} ↗</a>}
         </section>
-        <section className="mt-4 rounded-2xl border border-[#27272a] bg-[#15151B] p-5">
+        <section className="mt-4 rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
           <h2 className="font-semibold">{d.repo}</h2>
-          <p className="mt-2 text-sm text-[#A1A1AA]">{project.repoUrl ?? (locale === "es" ? "Privado por confidencialidad del cliente." : "Private for client confidentiality.")}</p>
+          <p className="mt-2 text-sm text-[var(--muted)]">{project.repoUrl ?? (locale === "es" ? "Privado por confidencialidad del cliente." : "Private for client confidentiality.")}</p>
         </section>
       </main>
       <Footer locale={locale} />
