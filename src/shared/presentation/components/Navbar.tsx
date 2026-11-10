@@ -4,29 +4,33 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navigationConfig } from "@/config/navigation.config";
+import { ThemeToggle } from "@/shared/presentation/theme/theme-toggle";
 import type { Locale } from "@/shared/domain/types";
 
 export function Navbar({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b border-[#27272a] bg-[#09090B]/90 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur">
       <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Link href={`/${locale}/`} className="text-lg font-bold tracking-tight">
-          CSU<span className="text-[#6C3BFF]">.</span>
+          CSU<span className="text-[var(--accent-text)]">.</span>
         </Link>
-        <div className="hidden items-center gap-5 text-sm text-[#A1A1AA] md:flex">
+        <div className="hidden items-center gap-5 text-sm text-[var(--muted)] md:flex">
           {navigationConfig.map((n) => (
-            <Link key={n.id} href={n.href[locale]} className="rounded px-1 py-1 hover:text-white focus-visible:outline-2 focus-visible:outline-[#6C3BFF]">
+            <Link key={n.id} href={n.href[locale]} className="rounded px-1 py-1 hover:text-[var(--text)] focus-visible:outline-2 focus-visible:outline-[#6C3BFF]">
               {n.label[locale]}
             </Link>
           ))}
         </div>
-        <div className="hidden items-center gap-2 text-sm md:flex" role="group" aria-label="Language">
-          <Link href="/es/" aria-label="Español" className={`rounded px-2 py-1 ${locale === "es" ? "bg-[#1c1c22] text-white" : "text-[#A1A1AA]"}`}>ES</Link>
-          <Link href="/en/" aria-label="English" className={`rounded px-2 py-1 ${locale === "en" ? "bg-[#1c1c22] text-white" : "text-[#A1A1AA]"}`}>EN</Link>
+        <div className="hidden items-center gap-2 md:flex">
+          <ThemeToggle locale={locale} />
+          <div className="flex items-center gap-2 text-sm" role="group" aria-label="Language">
+          <Link href="/es/" aria-label="ES - Español" className={`rounded px-2 py-1 ${locale === "es" ? "bg-[var(--surface-2)] text-[var(--text)]" : "text-[var(--muted)]"}`}>ES</Link>
+          <Link href="/en/" aria-label="EN - English" className={`rounded px-2 py-1 ${locale === "en" ? "bg-[var(--surface-2)] text-[var(--text)]" : "text-[var(--muted)]"}`}>EN</Link>
+          </div>
         </div>
         <button
-          className="rounded p-2 text-[#A1A1AA] md:hidden"
+          className="rounded p-2 text-[var(--muted)] md:hidden"
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
@@ -35,16 +39,17 @@ export function Navbar({ locale }: { locale: Locale }) {
         </button>
       </nav>
       {open && (
-        <div className="border-t border-[#27272a] px-4 py-4 md:hidden">
+        <div className="border-t border-[var(--border)] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3 text-sm">
             {navigationConfig.map((n) => (
-              <Link key={n.id} href={n.href[locale]} onClick={() => setOpen(false)} className="rounded py-2 text-[#A1A1AA] hover:text-white">
+              <Link key={n.id} href={n.href[locale]} onClick={() => setOpen(false)} className="rounded py-2 text-[var(--muted)] hover:text-[var(--text)]">
                 {n.label[locale]}
               </Link>
             ))}
-            <div className="flex gap-2 pt-2">
-              <Link href="/es/" aria-label="Español" className="rounded border border-[#27272a] px-4 py-2">ES</Link>
-              <Link href="/en/" aria-label="English" className="rounded border border-[#27272a] px-4 py-2">EN</Link>
+            <div className="flex items-center gap-2 pt-2">
+              <ThemeToggle locale={locale} />
+              <Link href="/es/" aria-label="ES - Español" className="rounded border border-[var(--border)] px-4 py-2">ES</Link>
+              <Link href="/en/" aria-label="EN - English" className="rounded border border-[var(--border)] px-4 py-2">EN</Link>
             </div>
           </div>
         </div>
