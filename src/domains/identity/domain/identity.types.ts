@@ -17,5 +17,4 @@ export interface Profile {
   phone: string;
   linkedin: string;
   github: string;
-  available: Record<Locale, string>;
 }

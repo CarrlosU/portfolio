@@ -56,6 +56,5 @@ export async function getProfile(): Promise<Profile> {
     phone: siteConfig.phone,
     linkedin: siteConfig.linkedin,
     github: siteConfig.github,
-    available: { es: "Disponible para oportunidades", en: "Available for opportunities" },
   };
 }
