@@ -1,20 +1,31 @@
 import { describe, it, expect } from "vitest";
-import { LIVE_SCENES } from "@/shared/presentation/components/hero-visual/live-scenes.data";
+import { LIVE_CATEGORIES } from "@/shared/presentation/components/hero-visual/live-scenes.data";
 
 describe("live-scenes.data", () => {
-  it("defines 7 scenes with unique ids, files and non-empty code", () => {
-    expect(LIVE_SCENES).toHaveLength(7);
-    const ids = LIVE_SCENES.map((s) => s.id);
-    expect(new Set(ids).size).toBe(7);
-    const files = LIVE_SCENES.map((s) => s.file);
-    expect(new Set(files).size).toBe(7);
-    for (const s of LIVE_SCENES) {
+  it("defines 4 categories in fixed order with 10 snippets each", () => {
+    expect(LIVE_CATEGORIES.map((c) => c.id)).toEqual([
+      "frontend",
+      "backend",
+      "data",
+      "infra",
+    ]);
+    for (const c of LIVE_CATEGORIES) {
+      expect(c.snippets).toHaveLength(10);
+      expect(c.short.length).toBeGreaterThan(0);
+      expect(c.techs.es.length).toBeGreaterThanOrEqual(3);
+      expect(c.techs.en.length).toBeGreaterThanOrEqual(3);
+    }
+  });
+
+  it("has 40 unique snippet ids and files with non-empty code", () => {
+    const all = LIVE_CATEGORIES.flatMap((c) => c.snippets);
+    expect(all).toHaveLength(40);
+    expect(new Set(all.map((s) => s.id)).size).toBe(40);
+    expect(new Set(all.map((s) => s.file)).size).toBe(40);
+    for (const s of all) {
       expect(s.file.length).toBeGreaterThan(0);
       expect(s.languageLabel.length).toBeGreaterThan(0);
-      for (const loc of ["es", "en"] as const) {
-        expect(s.techs[loc].length).toBeGreaterThanOrEqual(3);
-      }
-      expect(s.code.length).toBeGreaterThanOrEqual(3);
+      expect(s.code.length).toBeGreaterThanOrEqual(2);
       for (const line of s.code) {
         expect(line.length).toBeGreaterThan(0);
         for (const tok of line) {
@@ -22,18 +33,5 @@ describe("live-scenes.data", () => {
         }
       }
     }
-  });
-
-  it("covers frontend, backend, data, cache, containers, infra and concurrency", () => {
-    const ids = LIVE_SCENES.map((s) => s.id);
-    expect(ids).toEqual([
-      "dashboard",
-      "routes",
-      "query",
-      "cache",
-      "docker",
-      "nginx",
-      "worker",
-    ]);
   });
 });

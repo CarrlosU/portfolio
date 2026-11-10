@@ -10,14 +10,12 @@ export function CodeEditor({
   file,
   languageLabel,
   indexLabel,
-  techs,
   code,
   children,
 }: {
   file: string;
   languageLabel: string;
   indexLabel: string;
-  techs: string[];
   code: CodeLine[];
   children: React.ReactNode;
 }) {
@@ -40,9 +38,6 @@ export function CodeEditor({
         <code className="block min-w-0">{children}</code>
       </pre>
       <span className="sr-only">{plainText(code)}</span>
-      <div className="flex min-w-0 items-center justify-between gap-2 border-t border-[#27272a] px-3 py-2">
-        <p className="min-w-0 truncate text-[11px] text-[#A1A1AA]">{techs.join(" · ")}</p>
-      </div>
     </div>
   );
 }
