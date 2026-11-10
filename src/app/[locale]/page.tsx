@@ -41,10 +41,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
         {/* HERO */}
         <div className="grid min-w-0 items-center gap-10 py-14 sm:py-20 lg:grid-cols-2 lg:gap-12">
           <div className="min-w-0">
-          <p className="inline-block rounded-full border border-[#27272a] bg-[#15151B] px-3 py-1 text-xs text-[#A1A1AA]">
-            {profile.available[locale]}
-          </p>
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-[#6C3BFF]">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6C3BFF]">
             {profile.role[locale]}
           </p>
           <h1 className="mt-3 max-w-3xl text-balance text-4xl font-bold leading-[1.1] sm:text-[2.75rem]">
