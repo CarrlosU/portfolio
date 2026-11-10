@@ -1,8 +1,8 @@
 const { chromium } = require('playwright');
 
-// Captura las 7 escenas del editor live (panel) en ES y EN a 1440px,
+// Captura las 4 categorías del editor live (panel) en ES y EN a 1440px,
 // más full-page responsive 320/1440 para verificar que no hay overflow.
-const SCENES = 7;
+const CATEGORIES = 4;
 
 (async () => {
   const browser = await chromium.launch();
@@ -14,7 +14,7 @@ const SCENES = 7;
     const tabs = page.getByRole('tab');
     const count = await tabs.count();
     console.log(`${locale}: ${count} tabs`);
-    for (let i = 0; i < Math.min(count, SCENES); i++) {
+    for (let i = 0; i < Math.min(count, CATEGORIES); i++) {
       await tabs.nth(i).click();
       // Apartar el cursor: el panel pausa la escritura al hover.
       await page.mouse.move(10, 10);
