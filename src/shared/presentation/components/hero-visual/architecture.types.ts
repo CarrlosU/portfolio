@@ -19,3 +19,34 @@ export interface ArchitectureStage {
   language: string;
   code: CodeLine[];
 }
+
+// --- Live coding experience (fuente: live-scenes.data.ts) ---
+
+export type LiveLanguage =
+  | "tsx"
+  | "python"
+  | "sql"
+  | "dockerfile"
+  | "nginx"
+  | "go";
+
+export type LiveSceneId =
+  | "dashboard"
+  | "routes"
+  | "query"
+  | "cache"
+  | "docker"
+  | "nginx"
+  | "worker";
+
+import type { Locale } from "@/shared/domain/types";
+
+export interface LiveScene {
+  id: LiveSceneId;
+  index: string;
+  file: string;
+  language: LiveLanguage;
+  languageLabel: string;
+  techs: Record<Locale, string[]>;
+  code: CodeLine[];
+}
