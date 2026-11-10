@@ -20,16 +20,16 @@ export function CodeEditor({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-w-0 overflow-hidden rounded-xl border border-[#6C3BFF]/40 bg-[#0d0d12] shadow-[0_0_48px_-12px_rgba(108,59,255,0.55)]">
-      <div className="flex min-w-0 items-center justify-between gap-2 border-b border-[#27272a] px-3 py-2">
-        <p className="min-w-0 truncate font-mono text-xs text-[#FAFAFA]" aria-hidden="true">
+    <div className="min-w-0 overflow-hidden rounded-xl border border-[#6C3BFF]/40 bg-[var(--code-bg)] shadow-[0_0_48px_-12px_rgba(108,59,255,0.55)]">
+      <div className="flex min-w-0 items-center justify-between gap-2 border-b border-[var(--border)] px-3 py-2">
+        <p className="min-w-0 truncate font-mono text-xs text-[var(--text)]" aria-hidden="true">
           {file}
         </p>
         <span className="flex shrink-0 items-center gap-2">
-          <span className="rounded-full border border-[#27272a] px-2 py-0.5 font-mono text-[10px] text-[#A1A1AA]">
+          <span className="rounded-full border border-[var(--border)] px-2 py-0.5 font-mono text-[10px] text-[var(--muted)]">
             {languageLabel}
           </span>
-          <span className="font-mono text-[10px] text-[#A1A1AA]" aria-hidden="true">
+          <span className="font-mono text-[10px] text-[var(--muted)]" aria-hidden="true">
             {indexLabel}
           </span>
         </span>

@@ -4,11 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CodeLine, CodeTone } from "./architecture.types";
 
 const TONE_CLASS: Record<CodeTone, string> = {
-  kw: "text-[#6C3BFF]",
-  fn: "text-[#FAFAFA] font-medium",
-  str: "text-[#7dd3a8]",
-  plain: "text-[#FAFAFA]",
-  muted: "text-[#A1A1AA]",
+  kw: "text-[var(--accent-text)]",
+  fn: "text-[var(--text)] font-medium",
+  str: "text-[var(--code-str)]",
+  plain: "text-[var(--text)]",
+  muted: "text-[var(--muted)]",
 };
 
 function totalChars(code: CodeLine[]): number {
