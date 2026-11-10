@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { Globe, Briefcase, Mail, ArrowUpRight, Download } from "lucide-react";
+import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { BrandIcon } from "@/shared/presentation/components/BrandIcon";
 import { Navbar } from "@/shared/presentation/components/Navbar";
 import { Footer } from "@/shared/presentation/components/Footer";
 import { HeroVisual } from "@/shared/presentation/components/HeroVisual";
+import { SocialLinks } from "@/shared/presentation/components/SocialLinks";
 import { Section } from "@/shared/presentation/components/Section";
 import { getProfile } from "@/domains/identity";
 import { getProjects } from "@/domains/projects";
@@ -71,19 +73,11 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               <Download size={18} /> {locale === "es" ? "Descargar CV" : "Download CV"}
             </a>
           </div>
-          <div className="mt-5 grid w-full grid-cols-3 items-center text-sm text-[var(--muted)] sm:flex sm:justify-center sm:gap-10 lg:justify-between lg:gap-4 lg:px-2">
-            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--text)]">
-              GitHub <ArrowUpRight size={14} />
-            </a>
-            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--text)]">
-              LinkedIn <ArrowUpRight size={14} />
-            </a>
-            <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center justify-center gap-1 whitespace-nowrap transition-colors hover:text-[var(--text)]">
-              Email <ArrowUpRight size={14} />
-            </a>
           </div>
+          <div className="flex min-w-0 flex-col gap-4">
+            <HeroVisual locale={locale} />
+            <SocialLinks locale={locale} />
           </div>
-          <HeroVisual locale={locale} />
         </div>
 
         <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.aboutHeadline[locale]}>
@@ -194,8 +188,8 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
 
         <Section id={t.contact} eyebrow="Contact" title={locale === "es" ? "Hablemos de tecnología" : "Let's talk tech"}>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm hover:border-[#6C3BFF]"><Globe size={18} /> GitHub</a>
-            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm hover:border-[#6C3BFF]"><Briefcase size={18} /> LinkedIn</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm hover:border-[#6C3BFF]"><BrandIcon brand="github" size={18} /> GitHub</a>
+            <a href={siteConfig.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-5 py-3 text-sm hover:border-[#6C3BFF]"><BrandIcon brand="linkedin" size={18} /> LinkedIn</a>
             <a href={`mailto:${siteConfig.email}`} className="inline-flex items-center gap-2 rounded-xl bg-[#6C3BFF] px-5 py-3 text-sm text-white hover:bg-[#5a2fe0]"><Mail size={18} /> {siteConfig.email}</a>
           </div>
         </Section>
