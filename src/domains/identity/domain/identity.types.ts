@@ -1,7 +1,7 @@
 import type { Locale } from "@/shared/domain/types";
 
 export interface Principle {
-  id: "arquitectura" | "seguridad" | "calidad";
+  id: "architecture" | "security" | "quality";
   title: Record<Locale, string>;
   detail: Record<Locale, string>;
 }

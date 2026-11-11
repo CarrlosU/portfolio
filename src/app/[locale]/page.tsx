@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight, Download, Mail } from "lucide-react";
+import { ArrowUpRight, Code2, Download, Layers3, Mail, ShieldCheck } from "lucide-react";
 import { BrandIcon } from "@/shared/presentation/components/BrandIcon";
 import { Navbar } from "@/shared/presentation/components/Navbar";
 import { Footer } from "@/shared/presentation/components/Footer";
@@ -27,6 +27,13 @@ const ids = (locale: Locale) => ({
   education: locale === "es" ? "formacion" : "education",
   contact: locale === "es" ? "contacto" : "contact",
 });
+
+// Iconografía de los pilares "Sobre mí", asociada por id estable del dominio.
+const PRINCIPLE_ICONS = {
+  architecture: Layers3,
+  security: ShieldCheck,
+  quality: Code2,
+} as const;
 
 export default async function LocalePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -82,15 +89,21 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
 
         <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.aboutHeadline[locale]} compact>
           {profile.aboutBody[locale].map((p, i) => (
-            <p key={i} className="mt-2 max-w-3xl text-[var(--muted)] first:mt-0">{p}</p>
+            <p key={i} className="mt-4 max-w-3xl text-base leading-7 text-[var(--muted)] first:mt-0">{p}</p>
           ))}
-          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {profile.principles.map((pr) => (
-              <article key={pr.id} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
-                <h3 className="font-semibold">{pr.title[locale]}</h3>
-                <p className="mt-2 text-sm text-[var(--muted)]">{pr.detail[locale]}</p>
-              </article>
-            ))}
+          <div className="mt-5 grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {profile.principles.map((pr) => {
+              const Icon = PRINCIPLE_ICONS[pr.id];
+              return (
+                <article key={pr.id} className="group flex h-full flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-[#6C3BFF]/50 hover:shadow-[0_16px_40px_-24px_rgba(108,59,255,0.4)]">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-[#6C3BFF]/20 bg-[#6C3BFF]/10 text-[var(--accent-text)]">
+                    <Icon size={21} aria-hidden="true" />
+                  </div>
+                  <h3 className="font-semibold tracking-tight text-[var(--text)]">{pr.title[locale]}</h3>
+                  <p className="mt-2 text-sm leading-6 text-[var(--muted)]">{pr.detail[locale]}</p>
+                </article>
+              );
+            })}
           </div>
         </Section>
 
