@@ -6,10 +6,11 @@ import { Footer } from "@/shared/presentation/components/Footer";
 import { HeroVisual } from "@/shared/presentation/components/HeroVisual";
 import { SocialLinks } from "@/shared/presentation/components/SocialLinks";
 import { Section } from "@/shared/presentation/components/Section";
+import { ArchitectureFlow } from "@/shared/presentation/components/ArchitectureFlow";
+import { TechEcosystem } from "@/shared/presentation/components/TechEcosystem";
 import { getProfile } from "@/domains/identity";
 import { getProjects } from "@/domains/projects";
 import { experienceContent } from "@/content/experience";
-import { technologyContent } from "@/content/technology";
 import { educationContent } from "@/content/education";
 import { achievementsContent } from "@/content/achievements";
 import { siteConfig } from "@/config/site.config";
@@ -145,29 +146,24 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           </div>
         </Section>
 
-        <Section id="arquitectura" eyebrow="Architecture" title={locale === "es" ? "Arquitectura y decisiones" : "Architecture & decisions"}>
-          <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 text-sm sm:p-6">
-            <p className="text-[var(--muted)]">{locale === "es" ? "Monolito modular por dominios, export estático, persistencia en contenido versionado. Sin backend en v1; escalado horizontal vía CDN." : "Modular monolith, static export, versioned content. No backend in v1; horizontal scaling via CDN."}</p>
-            <div className="mt-4 grid gap-2 text-center text-xs sm:grid-cols-5">
-              {["Next.js", "Domains", "Content", "out/", "CDN"].map((n) => (
-                <div key={n} className="rounded-lg border border-[var(--border)] bg-[var(--surface-2)] px-2 py-3">{n}</div>
-              ))}
-            </div>
-          </div>
-        </Section>
-
-        <Section id={t.stack} eyebrow="Stack" title={locale === "es" ? "Tecnologías en contexto" : "Stack in context"}>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {technologyContent.map((g) => (
-              <div key={g.id} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
-                <h3 className="font-semibold">{g.title[locale]}</h3>
-                <p className="mt-1 text-xs text-[var(--muted)]">{g.context[locale]}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {g.items.map((i) => <span key={i.id} className="rounded-full bg-[var(--surface-2)] px-2.5 py-1 text-xs">{i.name}</span>)}
-                </div>
-              </div>
-            ))}
-          </div>
+        <Section
+          id={t.stack}
+          eyebrow={locale === "es" ? "Ingeniería" : "Engineering"}
+          title={locale === "es" ? "Arquitectura y tecnologías." : "Architecture & technologies."}
+        >
+          <p className="max-w-3xl text-[var(--muted)]">
+            {locale === "es"
+              ? "Cómo está construido este portafolio y ecosistema tecnológico que utilizo para crear soluciones digitales."
+              : "How this portfolio is built and the technology ecosystem I use to create digital solutions."}
+          </p>
+          <h3 className="mb-3 mt-6 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--accent-text)]">
+            {locale === "es" ? "01 · Arquitectura del portafolio" : "01 · Portfolio architecture"}
+          </h3>
+          <ArchitectureFlow locale={locale} />
+          <h3 className="mb-3 mt-8 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--accent-text)]">
+            {locale === "es" ? "02 · Ecosistema tecnológico" : "02 · Technology ecosystem"}
+          </h3>
+          <TechEcosystem locale={locale} />
         </Section>
 
         <Section id={t.education} eyebrow={locale === "es" ? "Formación" : "Education"} title={locale === "es" ? "Educación e idiomas" : "Education & languages"}>
