@@ -41,7 +41,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
       <Navbar locale={locale} />
       <main className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         {/* HERO */}
-        <div className="grid min-w-0 items-center gap-10 py-14 sm:py-20 lg:grid-cols-2 lg:gap-12">
+        <div className="grid min-w-0 items-center gap-10 pt-14 pb-8 sm:pt-20 sm:pb-10 lg:grid-cols-2 lg:gap-12">
           <div className="min-w-0">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent-text)]">
             {profile.role[locale]}
@@ -80,11 +80,11 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           </div>
         </div>
 
-        <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.aboutHeadline[locale]}>
+        <Section id={t.about} eyebrow={locale === "es" ? "Sobre mí" : "About"} title={profile.aboutHeadline[locale]} compact>
           {profile.aboutBody[locale].map((p, i) => (
-            <p key={i} className="mt-3 max-w-3xl text-[var(--muted)] first:mt-0">{p}</p>
+            <p key={i} className="mt-2 max-w-3xl text-[var(--muted)] first:mt-0">{p}</p>
           ))}
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {profile.principles.map((pr) => (
               <article key={pr.id} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
                 <h3 className="font-semibold">{pr.title[locale]}</h3>
