@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navigationConfig } from "@/config/navigation.config";
 import { ThemeToggle } from "@/shared/presentation/theme/theme-toggle";
+import { IMAGES } from "@/shared/presentation/assets/images";
 import type { Locale } from "@/shared/domain/types";
 
 // Controles uniformes (toggle de tema + ES/EN): misma altura, ancho mínimo,
@@ -17,8 +19,23 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur">
       <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link href={`/${locale}/`} className="text-lg font-bold tracking-tight">
-          CSU<span className="text-[var(--accent-text)]">.</span>
+        <Link
+          href={`/${locale}/`}
+          aria-label={
+            locale === "es"
+              ? "Carlos Santiago Urrego Jiménez - Inicio"
+              : "Carlos Santiago Urrego Jiménez - Home"
+          }
+          className="inline-flex shrink-0 items-center"
+        >
+          <Image
+            src={IMAGES.brand.logo}
+            alt="CSU"
+            width={72}
+            height={32}
+            priority
+            className="h-8 w-auto object-contain"
+          />
         </Link>
         <div className="hidden items-center gap-5 text-sm text-[var(--muted)] md:flex">
           {navigationConfig.map((n) => (
