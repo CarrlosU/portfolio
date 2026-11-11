@@ -18,37 +18,35 @@ export async function getProfile(): Promise<Profile> {
     },
     aboutBody: {
       es: [
-        "Me interesa diseñar y desarrollar soluciones digitales que combinen arquitectura sólida, código mantenible y experiencias de usuario intuitivas.",
-        "Mi trabajo se centra en construir sistemas confiables, optimizar procesos y aplicar buenas prácticas de ingeniería durante todo el ciclo de desarrollo.",
+        "Desarrollo soluciones digitales combinando arquitectura de software sólida, código mantenible y experiencias de usuario intuitivas. Priorizo la seguridad, el rendimiento y la confiabilidad, aplicando buenas prácticas de ingeniería durante todo el ciclo de desarrollo.",
       ],
       en: [
-        "I enjoy designing and building digital solutions that combine solid architecture, maintainable code and intuitive user experiences.",
-        "My work focuses on building reliable systems, optimizing processes and applying good engineering practices throughout the development cycle.",
+        "I build digital solutions combining solid software architecture, maintainable code and intuitive user experiences. I prioritize security, performance and reliability, applying good engineering practices throughout the development cycle.",
       ],
     },
     principles: [
       {
-        id: "arquitectura",
+        id: "architecture",
         title: { es: "Arquitectura y escalabilidad", en: "Architecture & scalability" },
         detail: {
-          es: "Diseño de sistemas modulares, organizados y preparados para evolucionar.",
-          en: "Design of modular, organized systems ready to evolve.",
+          es: "Sistemas modulares, organizados y preparados para evolucionar.",
+          en: "Modular, organized systems ready to evolve.",
         },
       },
       {
-        id: "seguridad",
+        id: "security",
         title: { es: "Seguridad y rendimiento", en: "Security & performance" },
         detail: {
-          es: "Desarrollo enfocado en eficiencia, protección de datos y confiabilidad.",
-          en: "Development focused on efficiency, data protection and reliability.",
+          es: "Eficiencia, protección de datos y sistemas confiables.",
+          en: "Efficiency, data protection and reliable systems.",
         },
       },
       {
-        id: "calidad",
+        id: "quality",
         title: { es: "Calidad de ingeniería", en: "Engineering quality" },
         detail: {
-          es: "Código mantenible, buenas prácticas y resolución estructurada de problemas.",
-          en: "Maintainable code, good practices and structured problem-solving.",
+          es: "Código mantenible, buenas prácticas y soluciones bien estructuradas.",
+          en: "Maintainable code, good practices and well-structured solutions.",
         },
       },
     ],
