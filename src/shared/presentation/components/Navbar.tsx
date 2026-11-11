@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navigationConfig } from "@/config/navigation.config";
 import { ThemeToggle } from "@/shared/presentation/theme/theme-toggle";
@@ -16,9 +16,26 @@ const controlClass =
 
 export function Navbar({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
+
+  // Menú móvil a pantalla completa: bloquea el scroll del fondo mientras está abierto.
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+    <header
+      className={`z-50 border-b border-[var(--border)] backdrop-blur ${
+        open
+          ? "fixed inset-0 flex flex-col bg-[var(--bg)] md:sticky md:top-0 md:bottom-auto md:left-auto md:right-auto md:block md:h-auto md:bg-[var(--bg)]/90"
+          : "sticky top-0 bg-[var(--bg)]/90"
+      }`}
+    >
+      <nav aria-label="Main" className="mx-auto flex w-full max-w-6xl shrink-0 items-center justify-between px-4 py-4 sm:px-6">
         <Link
           href={`/${locale}/`}
           aria-label={
@@ -54,6 +71,7 @@ export function Navbar({ locale }: { locale: Locale }) {
         <button
           className="rounded p-2 text-[var(--muted)] md:hidden"
           aria-expanded={open}
+          aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -61,7 +79,7 @@ export function Navbar({ locale }: { locale: Locale }) {
         </button>
       </nav>
       {open && (
-        <div className="border-t border-[var(--border)] px-4 py-4 md:hidden">
+        <div id="mobile-menu" className="flex min-h-0 flex-1 flex-col overflow-y-auto border-t border-[var(--border)] px-4 py-4 md:hidden">
           <div className="flex flex-col gap-3 text-sm">
             {navigationConfig.map((n) => (
               <Link key={n.id} href={n.href[locale]} onClick={() => setOpen(false)} className="rounded py-2 text-[var(--muted)] hover:text-[var(--text)]">
