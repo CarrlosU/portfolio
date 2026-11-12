@@ -10,6 +10,9 @@ export const IMAGES = {
       dark: "/images/brand/csu-logo-dark.webp",
       light: "/images/brand/csu-logo-light.webp",
     },
+    dimeloia: {
+      logo: "/images/brand/dimeloia/logo.webp",
+    },
   },
   education: {
     institutions: {

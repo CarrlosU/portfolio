@@ -39,8 +39,9 @@ export const technologyContent: TechGroup[] = [
       { id: "react", name: "React", category: "frontend" },
       { id: "next", name: "Next.js", category: "frontend" },
       { id: "tailwind", name: "Tailwind CSS", category: "frontend" },
+      { id: "wordpress", name: "WordPress", category: "frontend" },
     ],
-    context: { es: "Interfaces web y experiencias de usuario.", en: "Web interfaces and user experiences." },
+    context: { es: "Interfaces web, aplicaciones y gestión de contenidos mediante CMS.", en: "Web interfaces, applications, and content management using CMS platforms." },
   },
   {
     id: "data",
@@ -77,9 +78,15 @@ export const technologyContent: TechGroup[] = [
   },
   {
     id: "ai",
-    title: { es: "IA", en: "AI" },
-    items: [{ id: "ai-int", name: "AI Integration", category: "ai" }],
-    context: { es: "Integración de capacidades de inteligencia artificial en aplicaciones.", en: "Integration of artificial intelligence capabilities into applications." },
+    title: { es: "IA y agentes", en: "AI & agents" },
+    items: [
+      { id: "ai-int", name: "AI Integration", category: "ai" },
+      { id: "ai-agents", name: "AI Agents", category: "ai" },
+      { id: "mcp", name: "MCP", category: "ai" },
+      { id: "agent-skills", name: "Agent Skills", category: "ai" },
+      { id: "automation", name: "Automation", category: "ai" },
+    ],
+    context: { es: "Integración de IA, agentes y automatización en flujos de trabajo.", en: "AI, agent and automation integration into workflows." },
   },
   {
     id: "testing",
