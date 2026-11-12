@@ -1,5 +1,16 @@
 import type { LucideIcon } from "lucide-react";
-import { Database, Drama, Sparkles, Webhook } from "lucide-react";
+import {
+  Boxes,
+  Building2,
+  Coffee,
+  Database,
+  Drama,
+  Layers,
+  Network,
+  Sparkles,
+  Webhook,
+  Workflow,
+} from "lucide-react";
 import type { Brand } from "@/shared/presentation/components/BrandIcon";
 
 export type TechIcon = { kind: "brand"; brand: Brand } | { kind: "lucide"; icon: LucideIcon };
@@ -11,8 +22,10 @@ export const TECH_ICONS: Record<string, TechIcon> = {
   python: { kind: "brand", brand: "python" },
   javascript: { kind: "brand", brand: "javascript" },
   ts: { kind: "brand", brand: "typescript" },
+  java: { kind: "lucide", icon: Coffee },
   sql: { kind: "lucide", icon: Database },
   fastapi: { kind: "brand", brand: "fastapi" },
+  springboot: { kind: "brand", brand: "springboot" },
   sqlalchemy: { kind: "brand", brand: "sqlalchemy" },
   rest: { kind: "lucide", icon: Webhook },
   go: { kind: "brand", brand: "go" },
@@ -26,6 +39,11 @@ export const TECH_ICONS: Record<string, TechIcon> = {
   linux: { kind: "brand", brand: "linux" },
   git: { kind: "brand", brand: "git" },
   nginx: { kind: "brand", brand: "nginx" },
+  cicd: { kind: "lucide", icon: Workflow },
+  "modular-monolith": { kind: "lucide", icon: Boxes },
+  "domain-arch": { kind: "lucide", icon: Network },
+  "layered-arch": { kind: "lucide", icon: Layers },
+  "multi-tenant": { kind: "lucide", icon: Building2 },
   "ai-int": { kind: "lucide", icon: Sparkles },
   pytest: { kind: "brand", brand: "pytest" },
   vitest: { kind: "brand", brand: "vitest" },
