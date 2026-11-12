@@ -12,3 +12,21 @@ body {
   background: var(--primary);
   color: var(--primary-fg);
 }
+
+/* Logo dual por tema: la clase .dark del documentElement decide cuál se ve.
+   Sin estado ni JS: cambio inmediato y sin parpadeo de hidratación. */
+.logo-dark {
+  display: none;
+}
+
+.logo-light {
+  display: block;
+}
+
+.dark .logo-dark {
+  display: block;
+}
+
+.dark .logo-light {
+  display: none;
+}
