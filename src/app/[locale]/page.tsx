@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Code2, Download, Languages, Layers3, Mail, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Code2, Download, Layers3, Mail, ShieldCheck } from "lucide-react";
 import { BrandIcon } from "@/shared/presentation/components/BrandIcon";
 import { Navbar } from "@/shared/presentation/components/Navbar";
 import { Footer } from "@/shared/presentation/components/Footer";
@@ -210,7 +210,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
                     />
                   </span>
                   <div className="min-w-0">
-                    <p className="font-medium">{s.title[locale]}</p>
+                    <p className="text-sm font-semibold">{s.title[locale]}</p>
                     <p className="text-sm text-[var(--muted)]">{s.institution} · {s.year}</p>
                   </div>
                 </div>
@@ -218,14 +218,13 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
             </div>
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
               {educationContent.languages.map((l) => (
-                <div key={l.code} className="flex items-center gap-3 py-2">
-                  <span className="inline-flex h-9 w-11 shrink-0 items-center justify-center gap-1 rounded-lg border border-[#6C3BFF]/20 bg-[#6C3BFF]/10 font-mono text-xs font-semibold text-[var(--accent-text)]">
-                    <Languages size={13} aria-hidden="true" />
+                <div key={l.code} className="flex items-center gap-4 py-2">
+                  <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-[#6C3BFF]/20 bg-[#6C3BFF]/10 font-mono text-sm font-semibold tracking-wide text-[var(--accent-text)]">
                     {l.code.toUpperCase()}
                   </span>
                   <div className="min-w-0">
-                    <p className="text-sm font-medium">{l.name}</p>
-                    <p className="text-xs text-[var(--muted)]">{l.level[locale]}</p>
+                    <p className="text-sm font-semibold">{l.name}</p>
+                    <p className="text-sm text-[var(--muted)]">{l.level[locale]}</p>
                   </div>
                 </div>
               ))}
