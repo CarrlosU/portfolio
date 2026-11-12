@@ -10,6 +10,7 @@ export interface Project {
   id: string;
   slug: ProjectSlug;
   name: string;
+  brand?: "dimeloia";
   tagline: Record<Locale, string>;
   description: Record<Locale, string>;
   problem: Record<Locale, string>;

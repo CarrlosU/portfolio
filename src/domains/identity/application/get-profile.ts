@@ -18,10 +18,10 @@ export async function getProfile(): Promise<Profile> {
     },
     aboutBody: {
       es: [
-        "Desarrollo soluciones digitales combinando arquitectura de software sólida, código mantenible y experiencias de usuario intuitivas. Priorizo la seguridad, el rendimiento y la confiabilidad, aplicando buenas prácticas de ingeniería durante todo el ciclo de desarrollo.",
+        "Desarrollo soluciones digitales combinando arquitectura de software sólida, código mantenible y experiencias de usuario intuitivas. Priorizo la seguridad, el rendimiento y la confiabilidad, aplicando buenas prácticas de ingeniería durante todo el ciclo de desarrollo. Integro herramientas de inteligencia artificial, agentes y automatización en mis flujos de desarrollo para optimizar procesos y resolver problemas con mayor eficiencia.",
       ],
       en: [
-        "I build digital solutions combining solid software architecture, maintainable code and intuitive user experiences. I prioritize security, performance and reliability, applying good engineering practices throughout the development cycle.",
+        "I build digital solutions combining solid software architecture, maintainable code and intuitive user experiences. I prioritize security, performance and reliability, applying good engineering practices throughout the development cycle. I integrate artificial intelligence tools, agents and automation into my development workflows to optimize processes and solve problems more efficiently.",
       ],
     },
     principles: [
