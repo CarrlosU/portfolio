@@ -13,6 +13,7 @@ export const technologyContent: TechGroup[] = [
     title: { es: "Lenguajes", en: "Languages" },
     items: [
       { id: "python", name: "Python", category: "backend" },
+      { id: "javascript", name: "JavaScript", category: "frontend" },
       { id: "ts", name: "TypeScript", category: "frontend" },
       { id: "sql", name: "SQL", category: "database" },
     ],
@@ -25,6 +26,7 @@ export const technologyContent: TechGroup[] = [
       { id: "fastapi", name: "FastAPI", category: "backend" },
       { id: "sqlalchemy", name: "SQLAlchemy", category: "backend" },
       { id: "rest", name: "REST API", category: "backend" },
+      { id: "go", name: "Go", category: "backend" },
     ],
     context: { es: "APIs REST en producción en DimeloIA.", en: "Production REST APIs at DimeloIA." },
   },
@@ -44,6 +46,7 @@ export const technologyContent: TechGroup[] = [
     items: [
       { id: "postgres", name: "PostgreSQL", category: "database" },
       { id: "redis", name: "Redis", category: "database" },
+      { id: "mongodb", name: "MongoDB", category: "database" },
     ],
     context: { es: "Modelado, índices y caché.", en: "Modeling, indexes and caching." },
   },
@@ -54,13 +57,14 @@ export const technologyContent: TechGroup[] = [
       { id: "docker", name: "Docker", category: "devops" },
       { id: "linux", name: "Linux", category: "devops" },
       { id: "git", name: "Git", category: "devops" },
+      { id: "nginx", name: "Nginx", category: "devops" },
     ],
     context: { es: "Entornos, CI/CD y despliegue.", en: "Environments, CI/CD and deploy." },
   },
   {
     id: "ai",
     title: { es: "IA", en: "AI" },
-    items: [{ id: "ai-int", name: "Integración IA", category: "ai" }],
+    items: [{ id: "ai-int", name: "AI Integration", category: "ai" }],
     context: { es: "Voz, NLP y automatización.", en: "Voice, NLP and automation." },
   },
   {
