@@ -11,4 +11,10 @@ export const IMAGES = {
       light: "/images/brand/csu-logo-light.webp",
     },
   },
+  education: {
+    institutions: {
+      universidadCentral: "/images/education/universidad-central.webp",
+      colegioCastilla: "/images/education/colegio-castilla-ied.webp",
+    },
+  },
 } as const;
