@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Navbar } from "@/shared/presentation/components/Navbar";
 import { Footer } from "@/shared/presentation/components/Footer";
+import { IMAGES } from "@/shared/presentation/assets/images";
 import { getProjectBySlug } from "@/domains/projects";
 import type { Locale } from "@/shared/domain/types";
 
@@ -36,8 +38,23 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
       <Navbar locale={locale} />
       <main className="mx-auto w-full max-w-4xl px-4 py-12 sm:px-6">
         <Link href={`/${locale}/`} className="text-sm text-[var(--muted)] hover:text-[var(--text)]">← {d.back}</Link>
-        <p className="mt-4 text-xs uppercase tracking-widest text-[var(--accent-text)]">Case study</p>
-        <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{project.name}</h1>
+        <div className="mt-4 flex min-w-0 items-center gap-4">
+          {project.brand && (
+            <span className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface-2)] p-1.5">
+              <Image
+                src={IMAGES.brand[project.brand].logo}
+                alt={`Logotipo de ${project.name}`}
+                width={64}
+                height={64}
+                className="h-full w-full object-contain"
+              />
+            </span>
+          )}
+          <div className="min-w-0">
+            <p className="text-xs uppercase tracking-widest text-[var(--accent-text)]">Case study</p>
+            <h1 className="mt-2 text-3xl font-bold sm:text-4xl">{project.name}</h1>
+          </div>
+        </div>
         <p className="mt-2 text-[var(--muted)]">{project.tagline[locale]}</p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.stack.map((s) => <span key={s.id} className="rounded-full border border-[var(--border)] bg-[var(--surface)] px-3 py-1 text-xs">{s.name}</span>)}

@@ -1,5 +1,7 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  BookOpen,
+  Bot,
   Boxes,
   Building2,
   Coffee,
@@ -10,6 +12,7 @@ import {
   Sparkles,
   Webhook,
   Workflow,
+  Zap,
 } from "lucide-react";
 import type { Brand } from "@/shared/presentation/components/BrandIcon";
 
@@ -40,6 +43,11 @@ export const TECH_ICONS: Record<string, TechIcon> = {
   git: { kind: "brand", brand: "git" },
   nginx: { kind: "brand", brand: "nginx" },
   cicd: { kind: "lucide", icon: Workflow },
+  wordpress: { kind: "brand", brand: "wordpress" },
+  "ai-agents": { kind: "lucide", icon: Bot },
+  mcp: { kind: "lucide", icon: Network },
+  "agent-skills": { kind: "lucide", icon: BookOpen },
+  automation: { kind: "lucide", icon: Zap },
   "modular-monolith": { kind: "lucide", icon: Boxes },
   "domain-arch": { kind: "lucide", icon: Network },
   "layered-arch": { kind: "lucide", icon: Layers },

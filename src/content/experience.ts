@@ -4,6 +4,7 @@ export interface Experience {
   id: string;
   company: string;
   siteUrl?: string;
+  brand?: "dimeloia";
   position: Record<Locale, string>;
   period: string;
   bullets: Record<Locale, string[]>;
@@ -14,6 +15,7 @@ export const experienceContent: Experience[] = [
     id: "dimeloia",
     company: "DimeloIA",
     siteUrl: "https://dimeloia.com",
+    brand: "dimeloia",
     position: {
       es: "Software Engineer | Backend & Full Stack",
       en: "Software Engineer | Backend & Full Stack",

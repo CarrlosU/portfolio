@@ -5,6 +5,7 @@ export const projectsContent: Project[] = [
     id: "dimeloia",
     slug: "dimeloia",
     name: "DimeloIA",
+    brand: "dimeloia",
     tagline: {
       es: "Plataforma SaaS de cotizaciones con IA y procesamiento de voz.",
       en: "SaaS quoting platform with AI and voice processing.",

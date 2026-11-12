@@ -111,12 +111,23 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
         <Section id={t.experience} eyebrow={locale === "es" ? "Experiencia" : "Experience"} title={locale === "es" ? "Trayectoria" : "Career"}>
           {experienceContent.map((e) => (
             <article key={e.id} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
-              <div className="flex flex-col justify-between gap-2 sm:flex-row">
-                <div>
+              <div className="flex min-w-0 flex-wrap items-center gap-4">
+                {e.brand && (
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-1.5">
+                    <Image
+                      src={IMAGES.brand[e.brand].logo}
+                      alt={`Logotipo de ${e.company}`}
+                      width={56}
+                      height={56}
+                      className="h-full w-full object-contain"
+                    />
+                  </span>
+                )}
+                <div className="min-w-0 flex-1 basis-48">
                   <h3 className="text-lg font-semibold">{e.position[locale]} · {e.company}</h3>
                   {e.siteUrl && <a href={e.siteUrl} target="_blank" rel="noopener noreferrer" className="text-sm text-[var(--accent-text)]">{e.siteUrl.replace("https://", "")}</a>}
                 </div>
-                <span className="text-sm text-[var(--muted)]">{e.period}</span>
+                <span className="w-full text-sm text-[var(--muted)] sm:w-auto sm:text-right">{e.period}</span>
               </div>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--muted)]">
                 {e.bullets[locale].map((b, i) => <li key={i}>{b}</li>)}
@@ -129,7 +140,20 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           <div className="grid gap-5 md:grid-cols-2">
             {projects.map((p) => (
               <article key={p.slug} className="flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 sm:p-6">
-                <h3 className="text-xl font-semibold">{p.name}</h3>
+                <div className="flex min-w-0 items-center gap-3">
+                  {p.brand && (
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface-2)] p-1">
+                      <Image
+                        src={IMAGES.brand[p.brand].logo}
+                        alt={`Logotipo de ${p.name}`}
+                        width={44}
+                        height={44}
+                        className="h-full w-full object-contain"
+                      />
+                    </span>
+                  )}
+                  <h3 className="min-w-0 text-xl font-semibold">{p.name}</h3>
+                </div>
                 <p className="mt-1 text-sm text-[var(--muted)]">{p.tagline[locale]}</p>
                 <p className="mt-3 text-sm text-[var(--muted)]">{p.description[locale]}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
