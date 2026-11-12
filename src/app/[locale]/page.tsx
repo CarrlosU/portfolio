@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Code2, Download, Layers3, Mail, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import { ArrowUpRight, Code2, Download, Languages, Layers3, Mail, ShieldCheck } from "lucide-react";
 import { BrandIcon } from "@/shared/presentation/components/BrandIcon";
 import { Navbar } from "@/shared/presentation/components/Navbar";
 import { Footer } from "@/shared/presentation/components/Footer";
@@ -12,6 +13,7 @@ import { getProjects } from "@/domains/projects";
 import { experienceContent } from "@/content/experience";
 import { educationContent } from "@/content/education";
 import { achievementsContent } from "@/content/achievements";
+import { IMAGES } from "@/shared/presentation/assets/images";
 import { siteConfig } from "@/config/site.config";
 import type { Locale } from "@/shared/domain/types";
 
@@ -174,15 +176,35 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           <div className="grid gap-4 md:grid-cols-2">
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
               {educationContent.studies.map((s) => (
-                <div key={s.id} className="py-2">
-                  <p className="font-medium">{s.title[locale]}</p>
-                  <p className="text-sm text-[var(--muted)]">{s.institution} · {s.year}</p>
+                <div key={s.id} className="flex items-center gap-4 py-2">
+                  <span className="flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-[var(--border)] bg-white p-1">
+                    <Image
+                      src={IMAGES.education.institutions[s.logo]}
+                      alt={s.institution}
+                      width={56}
+                      height={56}
+                      className="h-full w-full object-contain"
+                    />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-medium">{s.title[locale]}</p>
+                    <p className="text-sm text-[var(--muted)]">{s.institution} · {s.year}</p>
+                  </div>
                 </div>
               ))}
             </div>
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
               {educationContent.languages.map((l) => (
-                <p key={l.code} className="py-1 text-sm"><span className="font-medium">{l.name}:</span> <span className="text-[var(--muted)]">{l.level[locale]}</span></p>
+                <div key={l.code} className="flex items-center gap-3 py-2">
+                  <span className="inline-flex h-9 w-11 shrink-0 items-center justify-center gap-1 rounded-lg border border-[#6C3BFF]/20 bg-[#6C3BFF]/10 font-mono text-xs font-semibold text-[var(--accent-text)]">
+                    <Languages size={13} aria-hidden="true" />
+                    {l.code.toUpperCase()}
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium">{l.name}</p>
+                    <p className="text-xs text-[var(--muted)]">{l.level[locale]}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

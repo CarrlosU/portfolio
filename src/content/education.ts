@@ -2,12 +2,14 @@ export const educationContent = {
   studies: [
     {
       id: "bachiller",
+      logo: "colegioCastilla",
       title: { es: "Bachiller Académico", en: "High School Diploma" },
       institution: "Colegio Castilla I.E.D.",
       year: "2020",
     },
     {
       id: "sistemas",
+      logo: "universidadCentral",
       title: { es: "Ingeniería en Sistemas", en: "Systems Engineering" },
       institution: "Universidad Central",
       year: "2022 – Actual",
