@@ -12,6 +12,7 @@ import { getProfile } from "@/domains/identity";
 import { getProjects } from "@/domains/projects";
 import { experienceContent } from "@/content/experience";
 import { educationContent } from "@/content/education";
+import { stackIntro } from "@/content/technology";
 import { IMAGES } from "@/shared/presentation/assets/images";
 import { siteConfig } from "@/config/site.config";
 import type { Locale } from "@/shared/domain/types";
@@ -176,23 +177,11 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
           title={locale === "es" ? "Tecnologías y herramientas." : "Technologies & tools."}
         >
           <p className="max-w-3xl text-[var(--muted)]">
-            {locale === "es"
-              ? "A lo largo de mis proyectos he trabajado con diferentes tecnologías, herramientas y ecosistemas de desarrollo. Este es un recorrido representativo de mi experiencia, no un stack limitado: me adapto e incorporo nuevas herramientas según las necesidades de cada solución."
-              : "Throughout my projects I have worked with different technologies, tools and development ecosystems. This is a representative tour of my experience, not a limited stack: I adapt and adopt new tools to fit each solution's needs."}
+            {stackIntro[locale]}
           </p>
           <div className="mt-6">
             <TechEcosystem locale={locale} />
           </div>
-          <aside className="mt-6 rounded-2xl border border-[#6C3BFF]/20 bg-[#6C3BFF]/5 p-5">
-            <h3 className="font-semibold tracking-tight text-[var(--text)]">
-              {locale === "es" ? "Más allá del stack" : "Beyond the stack"}
-            </h3>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-[var(--muted)]">
-              {locale === "es"
-                ? "Mi enfoque está en comprender los fundamentos de ingeniería, resolver problemas y elegir las herramientas adecuadas. Tengo disposición para aprender nuevas tecnologías y adaptarme a diferentes ecosistemas y desafíos."
-                : "My focus is on understanding engineering fundamentals, solving problems, and choosing the right tools. I'm continuously learning and adapting to new technologies, ecosystems, and challenges."}
-            </p>
-          </aside>
         </Section>
 
         <Section id={t.education} eyebrow={locale === "es" ? "Formación" : "Education"} title={locale === "es" ? "Educación e idiomas" : "Education & languages"}>
