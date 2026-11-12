@@ -1,4 +1,9 @@
-import type { TechnologyReference } from "@/shared/domain/types";
+import type { Locale, TechnologyReference } from "@/shared/domain/types";
+
+export const stackIntro: Record<Locale, string> = {
+  es: "He trabajado con distintos lenguajes, frameworks y ecosistemas tecnológicos para desarrollar aplicaciones, APIs y plataformas SaaS. Este stack representa parte de mi experiencia, no un conjunto limitado de herramientas: selecciono y adopto nuevas tecnologías según las necesidades de cada proyecto.",
+  en: "I have worked with different programming languages, frameworks, and technology ecosystems to build applications, APIs, and SaaS platforms. This stack represents part of my experience, not a fixed set of tools: I select and adopt new technologies according to each project's needs.",
+};
 
 interface TechGroup {
   id: string;
