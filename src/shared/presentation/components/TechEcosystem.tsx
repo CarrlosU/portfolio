@@ -20,7 +20,7 @@ function TechBadge({ id, name }: { id: string; name: string }) {
 // Bloque 02: ecosistema tecnológico por categorías (datos de technology.ts).
 export function TechEcosystem({ locale }: { locale: Locale }) {
   return (
-    <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {technologyContent.map((group) => (
         <article
           key={group.id}

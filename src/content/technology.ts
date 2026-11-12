@@ -17,7 +17,7 @@ export const technologyContent: TechGroup[] = [
       { id: "ts", name: "TypeScript", category: "frontend" },
       { id: "sql", name: "SQL", category: "database" },
     ],
-    context: { es: "Uso diario en APIs, SaaS y datos.", en: "Daily use in APIs, SaaS and data." },
+    context: { es: "Fundamentos aplicados al desarrollo de aplicaciones, APIs y datos.", en: "Fundamentals applied to application, API and data development." },
   },
   {
     id: "backend",
@@ -28,7 +28,7 @@ export const technologyContent: TechGroup[] = [
       { id: "rest", name: "REST API", category: "backend" },
       { id: "go", name: "Go", category: "backend" },
     ],
-    context: { es: "APIs REST en producción en DimeloIA.", en: "Production REST APIs at DimeloIA." },
+    context: { es: "Desarrollo e integración de APIs, servicios y lógica de negocio.", en: "API development and integration, services and business logic." },
   },
   {
     id: "frontend",
@@ -38,7 +38,7 @@ export const technologyContent: TechGroup[] = [
       { id: "next", name: "Next.js", category: "frontend" },
       { id: "tailwind", name: "Tailwind CSS", category: "frontend" },
     ],
-    context: { es: "Plataforma web y este portafolio.", en: "Web platform and this portfolio." },
+    context: { es: "Interfaces web y experiencias de usuario.", en: "Web interfaces and user experiences." },
   },
   {
     id: "data",
@@ -48,7 +48,7 @@ export const technologyContent: TechGroup[] = [
       { id: "redis", name: "Redis", category: "database" },
       { id: "mongodb", name: "MongoDB", category: "database" },
     ],
-    context: { es: "Modelado, índices y caché.", en: "Modeling, indexes and caching." },
+    context: { es: "Persistencia, modelado, consultas y caché.", en: "Persistence, modeling, queries and caching." },
   },
   {
     id: "devops",
@@ -59,13 +59,13 @@ export const technologyContent: TechGroup[] = [
       { id: "git", name: "Git", category: "devops" },
       { id: "nginx", name: "Nginx", category: "devops" },
     ],
-    context: { es: "Entornos, CI/CD y despliegue.", en: "Environments, CI/CD and deploy." },
+    context: { es: "Entornos, contenedores, infraestructura y despliegue.", en: "Environments, containers, infrastructure and deployment." },
   },
   {
     id: "ai",
     title: { es: "IA", en: "AI" },
     items: [{ id: "ai-int", name: "AI Integration", category: "ai" }],
-    context: { es: "Voz, NLP y automatización.", en: "Voice, NLP and automation." },
+    context: { es: "Integración de capacidades de inteligencia artificial en aplicaciones.", en: "Integration of artificial intelligence capabilities into applications." },
   },
   {
     id: "testing",
@@ -75,6 +75,6 @@ export const technologyContent: TechGroup[] = [
       { id: "vitest", name: "Vitest", category: "testing" },
       { id: "playwright", name: "Playwright", category: "testing" },
     ],
-    context: { es: "Unit, integración y E2E.", en: "Unit, integration and E2E." },
+    context: { es: "Pruebas unitarias, integración y extremo a extremo.", en: "Unit, integration and end-to-end testing." },
   },
 ];
