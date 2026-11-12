@@ -6,7 +6,6 @@ import { Footer } from "@/shared/presentation/components/Footer";
 import { HeroVisual } from "@/shared/presentation/components/HeroVisual";
 import { SocialLinks } from "@/shared/presentation/components/SocialLinks";
 import { Section } from "@/shared/presentation/components/Section";
-import { ArchitectureFlow } from "@/shared/presentation/components/ArchitectureFlow";
 import { TechEcosystem } from "@/shared/presentation/components/TechEcosystem";
 import { getProfile } from "@/domains/identity";
 import { getProjects } from "@/domains/projects";
@@ -148,22 +147,17 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
 
         <Section
           id={t.stack}
-          eyebrow={locale === "es" ? "Ingeniería" : "Engineering"}
-          title={locale === "es" ? "Arquitectura y tecnologías." : "Architecture & technologies."}
+          eyebrow="TECHNOLOGY STACK"
+          title={locale === "es" ? "Tecnologías y herramientas." : "Technologies & tools."}
         >
           <p className="max-w-3xl text-[var(--muted)]">
             {locale === "es"
-              ? "Cómo está construido este portafolio y ecosistema tecnológico que utilizo para crear soluciones digitales."
-              : "How this portfolio is built and the technology ecosystem I use to create digital solutions."}
+              ? "Ecosistema tecnológico con el que desarrollo aplicaciones, plataformas SaaS, APIs y soluciones digitales."
+              : "Technology ecosystem I use to build applications, SaaS platforms, APIs and digital solutions."}
           </p>
-          <h3 className="mb-3 mt-6 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--accent-text)]">
-            {locale === "es" ? "01 · Arquitectura del portafolio" : "01 · Portfolio architecture"}
-          </h3>
-          <ArchitectureFlow locale={locale} />
-          <h3 className="mb-3 mt-8 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--accent-text)]">
-            {locale === "es" ? "02 · Ecosistema tecnológico" : "02 · Technology ecosystem"}
-          </h3>
-          <TechEcosystem locale={locale} />
+          <div className="mt-6">
+            <TechEcosystem locale={locale} />
+          </div>
         </Section>
 
         <Section id={t.education} eyebrow={locale === "es" ? "Formación" : "Education"} title={locale === "es" ? "Educación e idiomas" : "Education & languages"}>
