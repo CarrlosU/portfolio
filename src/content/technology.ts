@@ -15,6 +15,7 @@ export const technologyContent: TechGroup[] = [
       { id: "python", name: "Python", category: "backend" },
       { id: "javascript", name: "JavaScript", category: "frontend" },
       { id: "ts", name: "TypeScript", category: "frontend" },
+      { id: "java", name: "Java", category: "backend" },
       { id: "sql", name: "SQL", category: "database" },
     ],
     context: { es: "Fundamentos aplicados al desarrollo de aplicaciones, APIs y datos.", en: "Fundamentals applied to application, API and data development." },
@@ -24,6 +25,7 @@ export const technologyContent: TechGroup[] = [
     title: { es: "Backend", en: "Backend" },
     items: [
       { id: "fastapi", name: "FastAPI", category: "backend" },
+      { id: "springboot", name: "Spring Boot", category: "backend" },
       { id: "sqlalchemy", name: "SQLAlchemy", category: "backend" },
       { id: "rest", name: "REST API", category: "backend" },
       { id: "go", name: "Go", category: "backend" },
@@ -51,15 +53,27 @@ export const technologyContent: TechGroup[] = [
     context: { es: "Persistencia, modelado, consultas y caché.", en: "Persistence, modeling, queries and caching." },
   },
   {
+    id: "architecture",
+    title: { es: "Arquitectura de software", en: "Software architecture" },
+    items: [
+      { id: "modular-monolith", name: "Modular Monolith", category: "architecture" },
+      { id: "domain-arch", name: "Domain Architecture", category: "architecture" },
+      { id: "layered-arch", name: "Layered Architecture", category: "architecture" },
+      { id: "multi-tenant", name: "Multi-tenant", category: "architecture" },
+    ],
+    context: { es: "Diseño y estructuración de sistemas.", en: "System design and structuring." },
+  },
+  {
     id: "devops",
-    title: { es: "DevOps", en: "DevOps" },
+    title: { es: "DevOps e infraestructura", en: "DevOps & infrastructure" },
     items: [
       { id: "docker", name: "Docker", category: "devops" },
       { id: "linux", name: "Linux", category: "devops" },
       { id: "git", name: "Git", category: "devops" },
       { id: "nginx", name: "Nginx", category: "devops" },
+      { id: "cicd", name: "CI/CD", category: "devops" },
     ],
-    context: { es: "Entornos, contenedores, infraestructura y despliegue.", en: "Environments, containers, infrastructure and deployment." },
+    context: { es: "Contenedorización, entornos, automatización y despliegue.", en: "Containerization, environments, automation and deployment." },
   },
   {
     id: "ai",

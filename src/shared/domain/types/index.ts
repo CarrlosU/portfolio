@@ -10,7 +10,8 @@ export type TechnologyCategory =
   | "mobile"
   | "ai"
   | "testing"
-  | "cms";
+  | "cms"
+  | "architecture";
 
 export interface TechnologyReference {
   id: string;
