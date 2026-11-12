@@ -12,7 +12,6 @@ import { getProfile } from "@/domains/identity";
 import { getProjects } from "@/domains/projects";
 import { experienceContent } from "@/content/experience";
 import { educationContent } from "@/content/education";
-import { achievementsContent } from "@/content/achievements";
 import { IMAGES } from "@/shared/presentation/assets/images";
 import { siteConfig } from "@/config/site.config";
 import type { Locale } from "@/shared/domain/types";
@@ -208,17 +207,6 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
               ))}
             </div>
           </div>
-        </Section>
-
-        <Section id="logros" eyebrow={locale === "es" ? "Logros" : "Achievements"} title={locale === "es" ? "Resultados verificables" : "Verifiable outcomes"}>
-          <ul className="grid gap-4 md:grid-cols-3">
-            {achievementsContent.map((a) => (
-              <li key={a.id} className="rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5">
-                <p className="font-semibold">{a.title[locale]}</p>
-                <p className="mt-2 text-sm text-[var(--muted)]">{a.detail[locale]}</p>
-              </li>
-            ))}
-          </ul>
         </Section>
 
         <Section id={t.contact} eyebrow="Contact" title={locale === "es" ? "Hablemos de tecnología" : "Let's talk tech"}>
