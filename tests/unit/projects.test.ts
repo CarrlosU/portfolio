@@ -2,10 +2,11 @@ import { describe, it, expect } from "vitest";
 import { getProjects, getProjectBySlug } from "@/domains/projects";
 
 describe("projects repository", () => {
-  it("returns 4 projects", async () => {
+  it("returns 3 projects", async () => {
     const all = await getProjects("es");
-    expect(all).toHaveLength(4);
-    expect(all.map((p) => p.slug)).toContain("dimeloia");
+    expect(all).toHaveLength(3);
+    expect(all.map((p) => p.slug)).toEqual(["dimeloia", "jumpproxy-engine", "captcha-bypass"]);
+    expect(all.map((p) => p.slug)).not.toContain("jetx-collector");
   });
   it("finds by slug in both locales", async () => {
     const es = await getProjectBySlug("dimeloia", "es");

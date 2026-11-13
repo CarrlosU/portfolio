@@ -4,7 +4,7 @@ export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://carlosurrego.onrender.com";
-  const slugs = ["dimeloia", "jumpproxy-engine", "captcha-bypass", "jetx-collector"];
+  const slugs = ["dimeloia", "jumpproxy-engine", "captcha-bypass"];
   const routes: MetadataRoute.Sitemap = [
     { url: `${base}/es/`, lastModified: new Date() },
     { url: `${base}/en/`, lastModified: new Date() },

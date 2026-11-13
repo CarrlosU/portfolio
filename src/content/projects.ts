@@ -85,30 +85,4 @@ export const projectsContent: Project[] = [
     ],
     featured: false,
   },
-  {
-    id: "jetx",
-    slug: "jetx-collector",
-    name: "JetX Data Collector",
-    tagline: {
-      es: "Recopilación y análisis estadístico en tiempo real.",
-      en: "Real-time collection and statistical analysis.",
-    },
-    description: {
-      es: "SignalR/WebSockets, Redis Streams, PostgreSQL, feature engineering y ML experimental.",
-      en: "SignalR/WebSockets, Redis Streams, PostgreSQL, feature engineering and experimental ML.",
-    },
-    problem: {
-      es: "Obtener datos en tiempo real para análisis.",
-      en: "Getting real-time data for analysis.",
-    },
-    role: {
-      es: "Ingesta streaming y análisis estadístico.",
-      en: "Streaming ingestion and statistical analysis.",
-    },
-    stack: [
-      { id: "redis", name: "Redis Streams", category: "database" },
-      { id: "postgres", name: "PostgreSQL", category: "database" },
-    ],
-    featured: false,
-  },
 ];

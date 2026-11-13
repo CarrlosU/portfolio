@@ -8,7 +8,7 @@ import type { Locale } from "@/shared/domain/types";
 
 export function generateStaticParams() {
   const locales = ["es", "en"];
-  const slugs = ["dimeloia", "jumpproxy-engine", "captcha-bypass", "jetx-collector"];
+  const slugs = ["dimeloia", "jumpproxy-engine", "captcha-bypass"];
   return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 

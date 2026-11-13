@@ -3,8 +3,7 @@ import type { Locale, TechnologyReference } from "@/shared/domain/types";
 export type ProjectSlug =
   | "dimeloia"
   | "jumpproxy-engine"
-  | "captcha-bypass"
-  | "jetx-collector";
+  | "captcha-bypass";
 
 export interface Project {
   id: string;
