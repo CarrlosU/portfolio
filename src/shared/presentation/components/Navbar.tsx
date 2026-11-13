@@ -46,22 +46,13 @@ export function Navbar({ locale }: { locale: Locale }) {
           className="inline-flex shrink-0 items-center"
         >
           <Image
-            src={IMAGES.brand.logo.dark}
+            src={IMAGES.brand.logo}
             alt=""
             aria-hidden="true"
-            width={72}
+            width={36}
             height={32}
             priority
-            className="logo-dark h-8 w-auto object-contain"
-          />
-          <Image
-            src={IMAGES.brand.logo.light}
-            alt=""
-            aria-hidden="true"
-            width={72}
-            height={32}
-            priority
-            className="logo-light h-8 w-auto object-contain"
+            className="h-8 w-auto object-contain"
           />
         </Link>
         <div className="hidden items-center gap-5 text-sm text-[var(--muted)] md:flex">

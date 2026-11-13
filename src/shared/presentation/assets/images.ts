@@ -2,14 +2,11 @@
 // Módulo de constantes compartido: sin lógica, sin IO, sin dependencias.
 // Regla: ningún componente hardcodea rutas /images/*; todo pasa por IMAGES.
 // Solo se registran archivos existentes (ver tests/unit/images.test.ts).
-// Logo dual por tema: WebP optimizado (PNG maestros conservados en la misma
-// carpeta hasta validar que el WebP no introduce halos ni degradados).
+// Logo CSU: C morada sobre transparencia real (verificada ~80% alfa 0).
+// Funciona en ambos temas con una sola imagen (PNG maestro + WebP).
 export const IMAGES = {
   brand: {
-    logo: {
-      dark: "/images/brand/csu-logo-dark.webp",
-      light: "/images/brand/csu-logo-light.webp",
-    },
+    logo: "/images/brand/csu-logo.webp",
     dimeloia: {
       logo: "/images/brand/dimeloia/logo.webp",
     },
