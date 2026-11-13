@@ -78,7 +78,7 @@ export default async function LocalePage({ params }: { params: Promise<{ locale:
             <Link href={`#${t.projects}`} className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#6C3BFF] px-6 py-3 font-medium text-white hover:bg-[#5a2fe0]">
               {locale === "es" ? "Ver proyectos" : "View projects"} <ArrowUpRight size={18} />
             </Link>
-            <a href={locale === "es" ? "/cv/CV-Carlos-Urrego-ES.pdf" : "/cv/CV-Carlos-Urrego-EN.pdf"} className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-6 py-3 font-medium hover:border-[#6C3BFF]">
+            <a href={locale === "es" ? "/cv/CV-Carlos-Urrego-ES.pdf" : "/cv/CV-Carlos-Urrego-EN.pdf"} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-[var(--surface)] px-6 py-3 font-medium hover:border-[#6C3BFF]">
               <Download size={18} /> {locale === "es" ? "Descargar CV" : "Download CV"}
             </a>
           </div>
